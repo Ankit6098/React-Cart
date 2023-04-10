@@ -4,17 +4,32 @@ class CartItem extends React.Component {
   constructor() {
     super();
     this.state = {
-      price: 999,
-      title: "Mobile Phone",
+      price: "₹ 1,29,900",
       qty: 1,
       img: "",
     };
     // this.increaseQuantity = this.increaseQuantity.bind(this);
-    // this.testing();
   }
 
+  increaseQuantity = () => {
+    this.setState({
+      qty: this.state.qty + 1,
+    });
+  };
+
+  decreaseQuantity = () => {
+    const { qty } = this.state;
+    if (qty === 1) {
+      return;
+    }
+
+    this.setState({
+      qty: this.state.qty - 1,
+    });
+  };
+
   render() {
-    const { price, title, qty } = this.state;
+    const { price, qty } = this.state;
     return (
       <div className="card">
         <div className="product-image-container">
@@ -53,10 +68,10 @@ class CartItem extends React.Component {
           <div className="product-discount-percentage">13% off</div>
         </div>
         <div className="product-quantity-container">
-          <div className="product-quantity-price">₹ 1,29,900</div>
-          <img className="product-quantity-increase" src="https://cdn-icons-png.flaticon.com/512/399/399271.png"></img>
-          <div className="product-quantity">1</div>
-          <img className="product-quantity-decrease" src="https://cdn-icons-png.flaticon.com/512/929/929430.png"></img>
+          <div className="product-quantity-price">{price}</div>
+          <img className="product-quantity-increase" src="https://cdn-icons-png.flaticon.com/512/3032/3032276.png" onClick={this.increaseQuantity}></img>
+          <div className="product-quantity">{qty}</div>
+          <img className="product-quantity-decrease" src="https://cdn-icons-png.flaticon.com/512/3032/3032280.png" onClick={this.decreaseQuantity}></img>
         </div>
         <div className="product-remove-container">
           <div>
