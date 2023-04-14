@@ -1,5 +1,4 @@
 import './App.css';
-import CartItem from './CartItem';
 import Cart from './Cart';
 
 function App() {
